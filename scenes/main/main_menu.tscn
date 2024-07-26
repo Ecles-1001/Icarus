@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://chmign1e8wn5y"]
+
+[ext_resource type="Script" path="res://scripts/main/main_menu.gd" id="1_28u7q"]
+[ext_resource type="Texture2D" uid="uid://b5ynprnheub21" path="res://assets/background/Brown.png" id="1_tfxbd"]
+[ext_resource type="Texture2D" uid="uid://8ro2r5eatrrs" path="res://assets/gui/IcarusTitle.png" id="2_ofv6q"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_28u7q")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tfxbd")
+stretch_mode = 1
+
+[node name="Title" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -336.0
+offset_top = 50.0
+offset_right = -67.0
+offset_bottom = 123.0
+grow_horizontal = 2
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_ofv6q")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -52.0
+offset_right = -51.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
