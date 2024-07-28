@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://chmign1e8wn5y"]
+[gd_scene load_steps=5 format=3 uid="uid://chmign1e8wn5y"]
 
 [ext_resource type="Script" path="res://scripts/main/main_menu.gd" id="1_28u7q"]
 [ext_resource type="Texture2D" uid="uid://b5ynprnheub21" path="res://assets/background/Brown.png" id="1_tfxbd"]
 [ext_resource type="Texture2D" uid="uid://8ro2r5eatrrs" path="res://assets/gui/IcarusTitle.png" id="2_ofv6q"]
+[ext_resource type="Script" path="res://scripts/main/game_manager.gd" id="4_joejr"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_28u7q")
@@ -36,25 +37,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -52.0
-offset_right = -51.0
-offset_bottom = 49.0
+offset_left = -140.0
+offset_top = -42.0
+offset_right = 140.0
+offset_bottom = 197.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3, 3)
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "Play"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "Quit"
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_joejr")
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

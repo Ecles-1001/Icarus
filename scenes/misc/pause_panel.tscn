@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci1hm77gqordk"]
+
+[ext_resource type="Script" path="res://scripts/misc/pause.gd" id="1_6nlqn"]
+[ext_resource type="Texture2D" uid="uid://bghhjere1ulqs" path="res://assets/gui/buttons/Close.png" id="2_ota48"]
+
+[node name="PausePanel" type="Panel"]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6nlqn")
+
+[node name="PausedLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.0
+offset_top = -244.0
+offset_right = 263.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.362829, 0.362829, 0.362829, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 150
+text = "Paused"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_right = 169.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Resume"
+
+[node name="Reset" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Reset"
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Leave Game"
+
+[node name="CloseGameButton" type="Button" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -76.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+icon = ExtResource("2_ota48")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CloseGameButton" to="." method="_on_close_game_button_pressed"]

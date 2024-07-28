@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch63kejko2s0w"]
+[gd_scene load_steps=9 format=3 uid="uid://ch63kejko2s0w"]
 
-[ext_resource type="Texture2D" uid="uid://cjl2l0kdeenr" path="res://assets/background/Green.png" id="1_2n3sg"]
+[ext_resource type="Script" path="res://scripts/main/world.gd" id="1_tivs1"]
+[ext_resource type="Texture2D" uid="uid://ck048cc3nirce" path="res://assets/background/Island_Background.png" id="2_37itb"]
 [ext_resource type="Texture2D" uid="uid://d3isx8xxle31m" path="res://assets/terrain/Terrain.png" id="2_yejrv"]
 [ext_resource type="PackedScene" uid="uid://q4ght477mojy" path="res://scenes/misc/icarus.tscn" id="3_vv503"]
+[ext_resource type="Script" path="res://scripts/main/game_manager.gd" id="5_x6pp2"]
+[ext_resource type="PackedScene" uid="uid://ci1hm77gqordk" path="res://scenes/misc/pause_panel.tscn" id="6_4k82v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_281qb"]
 texture = ExtResource("2_yejrv")
@@ -549,21 +552,36 @@ physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_281qb")
 
 [node name="World" type="Node"]
+script = ExtResource("1_tivs1")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -1000.0
-offset_top = -1000.0
-offset_right = 99000.0
-offset_bottom = 9000.0
-texture = ExtResource("1_2n3sg")
-stretch_mode = 1
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_37itb")
+centered = false
 
 [node name="TileMap" type="TileMap" parent="."]
 process_physics_priority = 1
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_t5mbw")
 format = 2
-layer_0/tile_data = PackedInt32Array(1310725, 393218, 0, 1310726, 458754, 0, 1310727, 524290, 0, 1376261, 393218, 1, 1376262, 458754, 1, 1376263, 524290, 1, 1441797, 393218, 2, 1441798, 458754, 2, 1441799, 524290, 2)
+layer_0/tile_data = PackedInt32Array(1310725, 458754, 0, 1310726, 458754, 0, 1310727, 458754, 0, 1376261, 458754, 1, 1376262, 458754, 1, 1376263, 458754, 1, 1441797, 458754, 2, 1441798, 458754, 2, 1441799, 458754, 2, 1310728, 458754, 0, 1376264, 458754, 1, 1441800, 458754, 2, 1310729, 524290, 0, 1376265, 589826, 1, 1441801, 458754, 2, 1376266, 458754, 0, 1441802, 458754, 2, 1376267, 458754, 0, 1441803, 458754, 2, 1310732, 393218, 0, 1376268, 655362, 1, 1441804, 458754, 2, 1310733, 458754, 0, 1376269, 458754, 1, 1441805, 458754, 2, 1310734, 458754, 0, 1376270, 458754, 1, 1441806, 458754, 2, 1310735, 393218, 1, 1376271, 458754, 1, 1441807, 458754, 2, 1310736, 524290, 1, 1376272, 458754, 1, 1441808, 458754, 2, 1310737, 458754, 0, 1376273, 458754, 1, 1441809, 458754, 2, 1310738, 458754, 0, 1376274, 458754, 1, 1441810, 458754, 2, 1310739, 458754, 0, 1376275, 458754, 1, 1441811, 458754, 2, 1310740, 458754, 0, 1376276, 458754, 1, 1441812, 458754, 2, 1310741, 458754, 0, 1376277, 458754, 1, 1441813, 458754, 2, 1310742, 458754, 0, 1376278, 458754, 1, 1441814, 458754, 2, 1310743, 458754, 0, 1376279, 458754, 1, 1441815, 458754, 2, 1310744, 458754, 0, 1376280, 458754, 1, 1441816, 458754, 2, 1310745, 458754, 0, 1376281, 458754, 1, 1441817, 458754, 2, 1310746, 458754, 0, 1376282, 458754, 1, 1441818, 458754, 2, 1310747, 458754, 0, 1376283, 458754, 1, 1441819, 458754, 2, 1310748, 458754, 0, 1376284, 458754, 1, 1441820, 458754, 2, 1310749, 458754, 0, 1376285, 458754, 1, 1441821, 458754, 2, 1310750, 458754, 0, 1376286, 458754, 1, 1441822, 458754, 2, 1310751, 458754, 0, 1376287, 458754, 1, 1441823, 458754, 2, 1310752, 458754, 0, 1376288, 458754, 1, 1441824, 458754, 2, 1310753, 458754, 0, 1376289, 458754, 1, 1441825, 458754, 2, 1310754, 458754, 0, 1376290, 458754, 1, 1441826, 458754, 2, 1310724, 458754, 0, 1376260, 458754, 1, 1441796, 458754, 2, 1310723, 458754, 0, 1376259, 458754, 1, 1441795, 458754, 2, 1310722, 458754, 0, 1376258, 458754, 1, 1441794, 458754, 2, 1310721, 458754, 0, 1376257, 458754, 1, 1441793, 458754, 2, 1310720, 393218, 0, 1376256, 393218, 1, 1441792, 393218, 2, 1310755, 524290, 0, 1376291, 524290, 1, 1441827, 524290, 2, 1245200, 524290, 0, 1245199, 393218, 0)
+
+[node name="Entities" type="Node" parent="."]
 
 [node name="Icarus" parent="." instance=ExtResource("3_vv503")]
-position = Vector2(208, 568)
+unique_name_in_owner = true
+position = Vector2(111, 587)
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_x6pp2")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PausePanel" parent="UI" instance=ExtResource("6_4k82v")]
+unique_name_in_owner = true
